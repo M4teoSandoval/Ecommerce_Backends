@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,20 +12,10 @@ Route::get('/products', function () {
     return 'List Products';
 });
 
+Route::get('/products',[ProductController :: class, 'index']);
 
 
-Route::get('/products/{id}/{category?}', function ($id, $category = null) {
 
-    if ($category != null){
-        return 'Detail Products: ' . $id . ". with category: " . $category;
-        
-    }
-    else{
+Route::get('/products/create',[ProductController :: class, 'create']);
+Route::get('/products/{id}/{category?}',[ProductController :: class, 'detail']);
 
-        return 'Detail Products: ' . $id;
-
-        
-
-    }
-    
-});
