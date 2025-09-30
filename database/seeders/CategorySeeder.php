@@ -20,7 +20,8 @@ class CategorySeeder extends Seeder
         $categoryComputers = new Category();
         $categoryComputers -> name = 'Computers';
         $categoryComputers -> save();
-    
+
+        Category::factory(200)->create();
     
     }
 }
