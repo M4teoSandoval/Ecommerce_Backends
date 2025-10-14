@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProductController;
-use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController; // ✅ agrega esta línea
+use Illuminate\Support\Facades\Auth;
+
 
 
 Route::prefix('products')->controller(ProductController::class)->group(function () {
@@ -14,3 +14,8 @@ Route::prefix('products')->controller(ProductController::class)->group(function 
     Route::get('/create', 'create');
     Route::get('/{id}/{category?}', 'detail');
 });
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'welcome']);
