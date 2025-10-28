@@ -6,7 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController; // ✅ agrega esta línea
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\AdminController; 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', [ProductController::class, 'index']);
 
@@ -23,9 +24,10 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::prefix('admin')->controller(AdminController::class)->group(function(){
+Route::prefix('admin')->group(function(){
 
-    Route::get('/', 'index')-> name('admin.index');
+    Route::get('/',[AdminController::class ,'index'])-> name('admin.index');
+    Route::get('/categories',[CategoryController ::class, 'create'])-> name('admin.categories.create');
 
 
 
