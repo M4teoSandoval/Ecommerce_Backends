@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" href="{{ asset('public/style.css') }}">
     <header>
-    <h1>Lista de Productos</h1>
+    <h1 class="index-title">Lista de Productos</h1>
   </header>
 
   <main class="container">

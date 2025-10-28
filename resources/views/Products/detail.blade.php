@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" href="{{ asset('public/style.css') }}">
     <header>
     <h1>Detalle del Producto</h1>
   </header>
@@ -18,7 +19,7 @@
       </p>
       <div class="price">$999</div>
       <a href="#" class="btn">Añadir al Carrito</a><br>
-      <a href="/products" class="back">← Volver a la lista de productos</a>
+      <a  href="/products" class="back">← Volver a la lista de productos</a>
     </div>
   </main>
 
