@@ -5,16 +5,21 @@
             <div class="card-header pb-0">
                 <h4>Products Table</h4>
             </div>
+            <div>
+                <a class="btn btn-primary m-3" href='{{ route('admin.products.create') }}' type="button">
+                    Add new Product
+                </a>
+            </div>
             <div class="card-body">
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            {{--<th>Description</th>--}}
+                            {{-- <th>Description</th> --}}
                             <th>Price</th>
                             <th>Brand</th>
-                             <th>Category</th> 
+                            <th>Category</th>
                             <th>Created</th>
                             <th>Updated</th>
                             <th></th>
@@ -39,6 +44,11 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                    {{ $products->links() }}
+                </div>
+
+
             </div>
         </div>
     </div>

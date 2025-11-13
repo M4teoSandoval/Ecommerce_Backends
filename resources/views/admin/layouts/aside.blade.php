@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{Request::is('admin/products/create') ? 'active bg-gradient-dark text-white' : 'nav-link text-dark'}}" href="{{route('admin.products.create')}}">
+                <a class="nav-link {{Request::is('admin/products') ? 'active bg-gradient-dark text-white' : 'nav-link text-dark'}}" href="{{route('admin.products.table')}}">
                     <i class="material-symbols-rounded opacity-5">table_view</i>
                     <span class="nav-link-text ms-1">Products</span>
                 </a>

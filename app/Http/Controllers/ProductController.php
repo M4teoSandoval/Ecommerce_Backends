@@ -45,7 +45,7 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0|max:999999999.99',
             'brand' => 'required|exists:brand,id',
             'category' => 'required|exists:categories,id',
         ]);
@@ -60,12 +60,12 @@ class ProductController extends Controller
         $product->save();
 
         // Redirigir a una página de éxito o mostrar un mensaje
-        return redirect()->route('admin.products.create')->with('success', 'Producto creado exitosamente.');
+        return redirect()->route('admin.products.table')->with('success', 'Producto creado exitosamente.');
     }
 
     function table()
     {
-        $products = Product::all();
+        $products = Product::orderBy('id','desc')->paginate(10);
         return view('Products.table', [
             'products' => $products
         ]);
