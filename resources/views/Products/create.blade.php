@@ -7,7 +7,7 @@
                 <h4>Crear Producto</h4>
             </div>
             <div class="card-body">
-                <form action="#" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
@@ -29,8 +29,8 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-3">
                                 <label for="brand" class="ms-0">Marca</label>
-                                <select class="form-control" id="brand" name="brand_id" required>
-                                    <option value="" disabled selected>Selecciona una marca</option>
+                                <select class="form-control" id="brand" name="brand" required>
+                                    <option disabled selected>Selecciona una marca</option>
                                     @foreach ($brands as $brand)
                                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                     @endforeach
@@ -42,8 +42,8 @@
                                 <label for="category" class="ms-0">Categoría</label>
 
 
-                                <select class="form-control" id="category" name="category_id" required>
-                                    <option value="" disabled selected>Selecciona una categoría</option>
+                                <select class="form-control" id="category" name="category" required>
+                                    <option  disabled selected>Selecciona una categoría</option>
 
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
