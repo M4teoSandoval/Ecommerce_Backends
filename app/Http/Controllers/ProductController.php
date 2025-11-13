@@ -12,19 +12,29 @@ class ProductController extends Controller
 {
     function index()
     {
-        return view('Products.index');
+        // Obtener categorías para el filtro
+        $categories = Category::all();
+
+        // Consulta base de productos con relaciones
+        $query = Product::with(['brand', 'category'])
+            ->orderBy('id', 'desc');
+
+        // Aplicar filtro por categoría si existe
+        if (request()->has('category') && request('category') != '') {
+            $query->where('category_id', request('category'));
+        }
+
+        // Paginar resultados
+        $products = $query->paginate(9);
+
+        return view('Products.index', compact('products', 'categories'));
     }
 
-    function detail($id,  $category = null)
+    function detail($id, $category = null)
     {
-        if ($category != null) {
-            return view('Products.detail', [
-                'id' => $id,
-                'category' => $category
-            ]);
-        } else {
-            return view('Products.detail', compact('id', 'category'));
-        }
+        $product = Product::with(['brand', 'category'])->findOrFail($id);
+
+        return view('Products.detail', compact('product'));
     }
 
     function create()
