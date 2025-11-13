@@ -62,4 +62,5 @@ class ProductController extends Controller
         // Redirigir a una página de éxito o mostrar un mensaje
         return redirect()->route('admin.products.create')->with('success', 'Producto creado exitosamente.');
     }
+    
 }
