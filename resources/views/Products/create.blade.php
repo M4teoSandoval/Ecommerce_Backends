@@ -4,7 +4,7 @@
     <div class="container-fluid py-4">
         <div class="card">
             <div class="card-header pb-0">
-                <h4>Crear Producto</h4>
+                <h4>New Product</h4>
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
