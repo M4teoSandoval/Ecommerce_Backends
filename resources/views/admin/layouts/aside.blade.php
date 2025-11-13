@@ -5,7 +5,7 @@
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand px-4 py-3 m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
             target="_blank">
-            <img style="max-height: fit-content!important;" src="../assets/img/logos/LogoUNAB/unab_logo.png"
+            <img style="max-height: fit-content!important;" src="{{asset('/assets/img/logos/LogoUNAB/unab_logo.png')}}"
                 alt="Ecommerce UNAB" class="img-fluid border-radius-lg shadow-sm">
 
         </a>
@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="../pages/tables.html">
+                <a class="nav-link text-dark" href="{{asset('/pages/tables.html')}}">
                     <i class="material-symbols-rounded opacity-5">table_view</i>
                     <span class="nav-link-text ms-1">products</span>
                 </a>
