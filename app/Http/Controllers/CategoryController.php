@@ -20,7 +20,7 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.table');
     }
 
-    
+
     function table()
     {
         $categories = Category::withCount('products')
@@ -35,20 +35,26 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         try {
-            // Verificar si la categoría tiene productos asociados
             $productCount = $category->products()->count();
 
             if ($productCount > 0) {
-                // Si hay productos, actualizarlos a categoría nula y luego eliminar
-                $category->products()->update(['category_id' => null]);
+                // Buscar una categoría por defecto (ej: "Sin categoría")
+                $defaultCategory = Category::where('name', 'Sin categoría')->first();
+
+                if (!$defaultCategory) {
+                    // Crear categoría por defecto si no existe
+                    $defaultCategory = Category::create(['name' => 'Sin categoría']);
+                }
+
+                // Asignar productos a la categoría por defecto
+                $category->products()->update(['category_id' => $defaultCategory->id]);
 
                 $category->delete();
 
                 return redirect()->route('admin.categories.table')
-                    ->with('warning', "Categoría eliminada. $productCount productos quedaron sin categoría asignada.");
+                    ->with('warning', "Categoría eliminada. $productCount productos fueron asignados a 'Sin categoría'.");
             }
 
-            // Si no hay productos, eliminar directamente
             $category->delete();
 
             return redirect()->route('admin.categories.table')

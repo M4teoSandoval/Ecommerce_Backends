@@ -26,13 +26,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{Request::is('admin/categories') ? 'active bg-gradient-dark text-white' : 'nav-link text-dark'}}" href="{{route('admin.categories.create')}}">
+                <a class="nav-link {{Request::is('admin/categories') ? 'active bg-gradient-dark text-white' : 'nav-link text-dark'}}" href="{{route('admin.categories.table')}}">
                     <i class="material-symbols-rounded opacity-5">receipt_long</i>
                     <span class="nav-link-text ms-1">Categories</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="../pages/virtual-reality.html">
+                <a class="nav-link {{Request::is('admin/brands') ? 'active bg-gradient-dark text-white' : 'nav-link text-dark'}}" href="{{route('admin.brands.table')}}">
                     <i class="material-symbols-rounded opacity-5">view_in_ar</i>
                     <span class="nav-link-text ms-1">Brands</span>
                 </a>
