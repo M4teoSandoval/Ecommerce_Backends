@@ -29,4 +29,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/products/store', [ProductController::class, 'store'])->name('admin.products.store');
 
     Route::get('/products', [ProductController::class, 'table'])->name('admin.products.table');
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])
+    ->name('admin.products.destroy');
+
+    Route::get('/categories', [ProductController::class, 'table'])->name('admin.categories.table');
 });

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -22,7 +23,7 @@ class ProductController extends Controller
                 'category' => $category
             ]);
         } else {
-            return view('Products.detail', compact('id','category'));
+            return view('Products.detail', compact('id', 'category'));
         }
     }
 
@@ -31,9 +32,9 @@ class ProductController extends Controller
         $brands = Brand::all();
         $categories = Category::all();
 
-    
 
-        return view('Products.create',[
+
+        return view('Products.create', [
             'brands' => $brands,
             'categories' => $categories
         ]);
@@ -65,10 +66,22 @@ class ProductController extends Controller
 
     function table()
     {
-        $products = Product::orderBy('id','desc')->paginate(10);
+        $products = Product::orderBy('id', 'desc')->paginate(10);
         return view('Products.table', [
             'products' => $products
         ]);
     }
 
+    function destroy(Product $product)
+    {
+        try {
+            $product->delete();
+
+            return redirect()->route('admin.products.table')
+                ->with('success', 'Producto eliminado exitosamente.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.products.table')
+                ->with('error', 'Error al eliminar el producto: ' . $e->getMessage());
+        }
+    }
 }
