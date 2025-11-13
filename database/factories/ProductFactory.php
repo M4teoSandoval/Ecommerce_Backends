@@ -5,6 +5,8 @@ namespace Database\Factories;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Brand;
+
 
 
 class ProductFactory extends Factory
@@ -19,8 +21,9 @@ class ProductFactory extends Factory
             'name'=>fake()->name(),
             'description'=>fake()->paragraph(),
             'price' =>fake()->randomFloat(2,10000,1000000),
-            'url_image' => fake()->imageUrl(640,480,'products',true),
+            //'url_image' => fake()->imageUrl(640,480,'products',true),
             'category_id' => Category::inRandomOrder()->first()->id,
+            'brand_id' => Brand::inRandomOrder()->first()->id,
         ];
     }
 }
